@@ -1,5 +1,5 @@
 - hosts: localhost
-  become: false # NOTE Don't run as su
+  become: true # required for pre task
   vars:
     source_key: "./.ssh/id_rsa"
     dest_key: "{{ lookup('env', 'HOME') }}/.ssh/id_rsa"
@@ -17,6 +17,6 @@
   - name: Setup SSH
     ansible.builtin.import_tasks:
       file: tasks/ssh.yml
-  - name: Include node tasks
+  - name: Install Node.js
     ansible.builtin.import_tasks:
       file: tasks/node.yml

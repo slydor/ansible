@@ -2,9 +2,9 @@
   file:
     dest: "{{ dest_key | dirname }}"
     mode: 0700
-    state: directory
     owner: "{{ lookup('env', 'USER') }}"
     group: "{{ lookup('env', 'USER') }}"
+    state: directory
   tags:
     - ssh
 - name: Install ssh key
