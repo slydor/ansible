@@ -13,9 +13,9 @@
     tags:
     - core
   tasks:
-  # - name: Setup SSH
-  #   ansible.builtin.import_tasks:
-  #     file: tasks/ssh.yml
+  - name: Setup SSH
+    ansible.builtin.import_tasks:
+      file: tasks/ssh.yml
   - name: Include node tasks
     ansible.builtin.import_tasks:
       file: tasks/node.yml
