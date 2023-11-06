@@ -1,5 +1,5 @@
 {
-    "name": "playground",
+    "name": "meta-dev",
     "build": {
         "dockerfile": "Dockerfile",
         "args": {}

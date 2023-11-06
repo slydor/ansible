@@ -1,0 +1,37 @@
+- name: Use VS Code as editor for all git operations, because it's superior
+  community.general.git_config:
+    name: core.editor
+    scope: global
+    value: "code --wait"
+  tags:
+  - git-personal
+  - git-fls
+
+- name: Include personal git vars
+  ansible.builtin.include_vars:
+    file: vars/personal-git.yml
+  tags:
+  - git-personal
+- name: Include personal git vars
+  ansible.builtin.include_vars:
+    file: vars/fls-git.yml
+  tags:
+  - git-fls
+  - never
+
+- name: Git setup email
+  community.general.git_config:
+    name: user.email
+    scope: global
+    value: "{{ user_email }}"
+  tags:
+  - git-personal
+  - git-fls
+- name: Git setup name
+  community.general.git_config:
+    name: user.name
+    scope: global
+    value: "{{ user_name }}"
+  tags:
+  - git-personal
+  - git-fls

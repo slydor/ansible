@@ -1,32 +1,26 @@
 - name: Ensure .ssh directory exists.
-  file:
+  ansible.builtin.file:
     dest: "{{ dest_key | dirname }}"
     mode: 0700
-    owner: "{{ lookup('env', 'USER') }}"
-    group: "{{ lookup('env', 'USER') }}"
     state: directory
   tags:
     - ssh
 - name: Install ssh key
-  copy:
+  ansible.builtin.copy:
     src: "{{ source_key }}"
     dest: "{{ dest_key }}"
     mode: 0600
-    owner: "{{ lookup('env', 'USER') }}"
-    group: "{{ lookup('env', 'USER') }}"
   tags:
     - ssh
 - name: Install ssh key public
-  copy:
+  ansible.builtin.copy:
     src: "{{ source_key }}.pub"
     dest: "{{ dest_key }}.pub"
     mode: 0644
-    owner: "{{ lookup('env', 'USER') }}"
-    group: "{{ lookup('env', 'USER') }}"
   tags:
     - ssh
 - name: Set authorized key took from file
-  authorized_key:
+  ansible.builtin.authorized_key:
     user: "{{ lookup('env', 'USER') }}"
     state: present
     key: "{{ lookup('file', item) }}"
