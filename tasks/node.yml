@@ -1,20 +1,20 @@
 - name: Install node
-  apt:
+  ansible.builtin.apt:
     name: ['nodejs', 'npm']
   tags:
   - node
 - name: Install n
-  npm:
+  community.general.npm:
     name: n
     global: true
   tags:
   - node
 - name: n 18
-  shell: n 18
+  ansible.builtin.shell: n 18
   tags:
   - node
 - name: n 20
-  shell: n 20
+  ansible.builtin.shell: n 20
   tags:
   - node
 

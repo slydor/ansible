@@ -1,12 +1,11 @@
 - hosts: localhost
-  become: true # required for pre task
   vars:
     source_key: "./.ssh/id_rsa"
     dest_key: "{{ lookup('env', 'HOME') }}/.ssh/id_rsa"
   pre_tasks:
   - name: Update apt
     become: true
-    apt:
+    ansible.builtin.apt:
       force_apt_get: true
       update_cache: true
       state: present
@@ -20,3 +19,8 @@
   - name: Install Node.js
     ansible.builtin.import_tasks:
       file: tasks/node.yml
+    become: true
+  - name: Setup git config
+    ansible.builtin.import_tasks:
+      file: tasks/git.yml
+
