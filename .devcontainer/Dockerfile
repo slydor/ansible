@@ -18,6 +18,7 @@ RUN adduser --gecos slydor --uid 1000 --gid 1000 slydor
 RUN usermod -aG sudo slydor
 RUN echo "slydor ALL=(ALL) NOPASSWD:ALL" | sudo tee /etc/sudoers.d/slydor
 USER slydor
+ENV USER="slydor"
 WORKDIR /home/slydor
 
 # Required for Ansible
