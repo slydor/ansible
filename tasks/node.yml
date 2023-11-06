@@ -1,0 +1,21 @@
+- name: Install node
+  apt:
+    name: ['nodejs', 'npm']
+  tags:
+  - node
+- name: Install n
+  npm:
+    name: n
+    global: true
+  tags:
+  - node
+- name: n 18
+  shell: n 18
+  tags:
+  - node
+- name: n 20
+  shell: n 20
+  tags:
+  - node
+
+#  TODO prettier
