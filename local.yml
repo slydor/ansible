@@ -1,5 +1,5 @@
 - hosts: localhost
-  become: true
+  become: false # NOTE Don't run as su
   vars:
     source_key: "./.ssh/id_rsa"
     dest_key: "{{ lookup('env', 'HOME') }}/.ssh/id_rsa"
@@ -12,6 +12,7 @@
       state: present
     tags:
     - core
+    - node
   tasks:
   - name: Setup SSH
     ansible.builtin.import_tasks:
@@ -19,6 +20,3 @@
   - name: Include node tasks
     ansible.builtin.import_tasks:
       file: tasks/node.yml
-
-# TODO SSH, gitlab project
-# TODO prettier
