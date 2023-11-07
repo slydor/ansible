@@ -14,6 +14,9 @@
     - core
     - node
   tasks:
+  - name: Install core packages
+    ansible.builtin.import_tasks:
+      file: tasks/core.yml
   - name: Setup SSH
     ansible.builtin.import_tasks:
       file: tasks/ssh.yml

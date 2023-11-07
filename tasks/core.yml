@@ -1,0 +1,14 @@
+- name: Install system packages
+  become: true
+  apt:
+    name:
+    - "build-essential"
+    - "cmake"
+    - "curl"
+    - "git"
+    - "htop"
+    - "python3-pip"
+    - "unzip"
+    - "zip"
+  tags:
+    - core
