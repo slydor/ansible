@@ -1,0 +1,10 @@
+- name: Add usefull Ubuntu aliases
+  ansible.builtin.copy:
+    src: files/.bash_aliases
+    dest: "{{ home_dir }}/.bash_aliases"
+  tags:
+  - alias
+- name: Re-source bashrc to load aliases
+  ansible.builtin.shell: ". {{ home_dir }}/.bashrc"
+  tags:
+  - alias

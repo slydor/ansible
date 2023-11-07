@@ -1,7 +1,8 @@
 - hosts: localhost
   vars:
     source_key: "./.ssh/id_rsa"
-    dest_key: "{{ lookup('env', 'HOME') }}/.ssh/id_rsa"
+    home_dir: "{{ lookup('env', 'HOME') }}"
+    dest_key: "{{ home_dir }}/.ssh/id_rsa"
   pre_tasks:
   - name: Update apt
     become: true
@@ -16,11 +17,13 @@
   - name: Setup SSH
     ansible.builtin.import_tasks:
       file: tasks/ssh.yml
+  - name: Setup git config
+    ansible.builtin.import_tasks:
+      file: tasks/git.yml
   - name: Install Node.js
     ansible.builtin.import_tasks:
       file: tasks/node.yml
     become: true
-  - name: Setup git config
+  - name: Setup aliases
     ansible.builtin.import_tasks:
-      file: tasks/git.yml
-
+      file: tasks/aliases.yml
