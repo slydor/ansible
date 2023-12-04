@@ -3,8 +3,8 @@
     src: files/.bash_aliases
     dest: "{{ home_dir }}/.bash_aliases"
   tags:
-  - alias
+    - alias
 - name: Re-source bashrc to load aliases
   ansible.builtin.shell: ". {{ home_dir }}/.bashrc"
   tags:
-  - alias
+    - alias

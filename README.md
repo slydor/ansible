@@ -5,7 +5,7 @@
 - Full
 
 ```sh
-ANSIBLE_ASK_VAULT_PASS=True ansible-pull --url https://github.com/slydor/ansible.git
+ANSIBLE_ASK_VAULT_PASS=True ansible-pull --url https://github.com/slydor/ansible.git --ask-become-pass
 ```
 
 - Just node
@@ -27,9 +27,11 @@ ANSIBLE_ASK_VAULT_PASS=True ansible-pull --url https://github.com/slydor/ansible
 
 ### Tags
 
+- core *requires --ask-become-pass*
 - ssh
 - git
-- node
+- node *requires --ask-become-pass*
+- docker *requires --ask-become-pass*
 - git-personal
 - git-fls
 

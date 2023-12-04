@@ -1,0 +1,45 @@
+- name: Install required system packages for ansible
+  ansible.builtin.apt:
+    name: "{{ item }}"
+    state: present
+  loop:
+    - "apt-transport-https"
+    - "gnupg-agent"
+  tags:
+    - docker
+
+- name: Add Docker gpg
+  ansible.builtin.apt_key:
+    url: https://download.docker.com/linux/ubuntu/gpg
+    state: present
+  tags:
+    - docker
+
+- name: Add Docker repository
+  ansible.builtin.apt_repository:
+    # yamllint disable-line rule:line-length
+    repo: deb [arch=amd64] https://download.docker.com/linux/ubuntu {{ ansible_distribution_release }} stable
+    state: present
+  tags:
+    - docker
+
+- name: Update apt and install docker-ce, docker-ce-cli, containerd.io
+  ansible.builtin.apt:
+    name: "{{ item }}"
+    state: present
+  loop:
+    - "docker-ce"
+    - "docker-ce-cli"
+    - "containerd.io"
+    - "docker-buildx-plugin"
+    - "docker-compose-plugin"
+  tags:
+    - docker
+
+- name: "Add user '{{ user }}' to docker group"
+  ansible.builtin.user:
+    name: "{{ user }}"
+    groups: "docker"
+    append: true
+  tags:
+    - docker
