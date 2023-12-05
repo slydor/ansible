@@ -1,0 +1,29 @@
+- name: Add usefull Ubuntu aliases
+  ansible.builtin.copy:
+    src: files/.bash_aliases
+    dest: '{{ home_dir }}/.bash_aliases'
+    mode: preserve
+  tags:
+    - shell
+
+# ansible-lint is installed into ~/.local/bin
+- name: Ensure ~/.local/bin is added to PATH
+  ansible.builtin.blockinfile:
+    dest: '{{ home_dir }}/.bashrc'
+    block: |
+      if [ -d ~/.local/bin ]; then
+        PATH=$PATH:~/.local/bin
+      fi
+    marker: '# {mark} ANSIBLE MANAGED BLOCK - .local/bin'
+    insertafter: EOF
+    create: true
+    mode: 0644
+  tags:
+    - dev
+    - shell
+
+- name: Re-source bashrc to load updates # noqa: no-changed-when
+  ansible.builtin.command: '. {{ home_dir }}/.bashrc'
+  tags:
+    - dev
+    - shell

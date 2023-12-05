@@ -1,0 +1,13 @@
+# this optional task is for developing this playbook
+- name: Install dev utils
+  ansible.builtin.pip:
+    name: '{{ item }}'
+    # using older version 6.3.0, because newer versions require python 3.9 or higher
+    # and this is not (yet) shipped with ubuntu 20 and manually upgrading this is not worth the effort
+    version: 6.3.0
+    state: present
+  loop:
+    - 'ansible-lint'
+  tags:
+    - dev
+    - never

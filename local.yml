@@ -1,42 +1,45 @@
 - hosts:
-  - localhost
+    - localhost
   vars:
-    source_key: "./.ssh/id_rsa"
+    source_key: './.ssh/id_rsa'
     home_dir: "{{ lookup('env', 'HOME') }}"
-    dest_key: "{{ home_dir }}/.ssh/id_rsa"
+    dest_key: '{{ home_dir }}/.ssh/id_rsa'
     user: "{{ lookup('env', 'USER') }}"
   pre_tasks:
-  - name: Update apt
-    become: true
-    ansible.builtin.apt:
-      force_apt_get: true
-      update_cache: true
-      state: present
-    tags:
-    - core
-    - docker
-    - node
+    - name: Update apt
+      become: true
+      ansible.builtin.apt:
+        force_apt_get: true
+        update_cache: true
+        state: present
+      tags:
+        - core
+        - docker
+        - node
   tasks:
-  - name: Install core packages
-    ansible.builtin.import_tasks:
-      file: tasks/core.yml
-    become: true
-  - name: Setup SSH
-    ansible.builtin.import_tasks:
-      file: tasks/ssh.yml
-  - name: Setup git config
-    ansible.builtin.import_tasks:
-      file: tasks/git.yml
-  - name: Install Node.js
-    ansible.builtin.import_tasks:
-      file: tasks/node.yml
-    become: true
-  - name: Install Docker
-    ansible.builtin.import_tasks:
-      file: tasks/docker.yml
-    become: true
-  - name: Setup aliases
-    ansible.builtin.import_tasks:
-      file: tasks/aliases.yml
-
-# TODO add unintended-upgrades
+    - name: Install core packages
+      ansible.builtin.import_tasks:
+        file: tasks/core.yml
+      become: true
+    - name: Setup SSH
+      ansible.builtin.import_tasks:
+        file: tasks/ssh.yml
+    - name: Setup git config
+      ansible.builtin.import_tasks:
+        file: tasks/git.yml
+    - name: Install Node.js
+      ansible.builtin.import_tasks:
+        file: tasks/node.yml
+      become: true
+    - name: Install Docker
+      ansible.builtin.import_tasks:
+        file: tasks/docker.yml
+      become: true
+    - name: Setup shell
+      ansible.builtin.import_tasks:
+        file: tasks/shell.yml
+    - name: Setup dev environment
+      ansible.builtin.import_tasks:
+        file: tasks/dev.yml
+      become: true
+# # TODO add unintended-upgrades

@@ -2,7 +2,7 @@
   community.general.git_config:
     name: core.editor
     scope: global
-    value: "code --wait"
+    value: 'code --wait'
   tags:
     - git-personal
     - git-fls
@@ -23,7 +23,7 @@
   community.general.git_config:
     name: user.email
     scope: global
-    value: "{{ user_email }}"
+    value: '{{ user_email }}'
   tags:
     - git-personal
     - git-fls
@@ -31,7 +31,7 @@
   community.general.git_config:
     name: user.name
     scope: global
-    value: "{{ user_name }}"
+    value: '{{ user_name }}'
   tags:
     - git-personal
     - git-fls

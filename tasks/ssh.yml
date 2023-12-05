@@ -1,21 +1,21 @@
 - name: Ensure .ssh directory exists.
   ansible.builtin.file:
-    dest: "{{ dest_key | dirname }}"
+    dest: '{{ dest_key | dirname }}'
     mode: 0700
     state: directory
   tags:
     - ssh
 - name: Install ssh key
   ansible.builtin.copy:
-    src: "{{ source_key }}"
-    dest: "{{ dest_key }}"
+    src: '{{ source_key }}'
+    dest: '{{ dest_key }}'
     mode: 0600
   tags:
     - ssh
 - name: Install ssh key public
   ansible.builtin.copy:
-    src: "{{ source_key }}.pub"
-    dest: "{{ dest_key }}.pub"
+    src: '{{ source_key }}.pub'
+    dest: '{{ dest_key }}.pub'
     mode: 0644
   tags:
     - ssh
@@ -25,4 +25,4 @@
     state: present
     key: "{{ lookup('file', item) }}"
   with_fileglob:
-    - "{{ home_dir }}/.ssh/*.pub"
+    - '{{ home_dir }}/.ssh/*.pub'

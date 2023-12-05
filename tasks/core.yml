@@ -1,18 +1,19 @@
 - name: Install system packages
   ansible.builtin.apt:
-    name: "{{ item }}"
+    name: '{{ item }}'
     state: present
   loop:
-    - "build-essential"
-    - "ca-certificates"
-    - "cmake"
-    - "curl"
-    - "git"
-    - "htop"
-    - "python3-pip"
-    - "software-properties-common"
-    - "unzip"
-    - "zip"
+    - 'build-essential'
+    - 'ca-certificates'
+    - 'cmake'
+    - 'curl'
+    - 'git'
+    - 'htop'
+    - 'python3-pip'
+    - 'software-properties-common'
+    - 'unzip'
+    - 'zip'
   tags:
     - core
+    - dev
     - docker

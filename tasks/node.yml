@@ -1,23 +1,27 @@
-- name: Install node
+- name: Install any node
   ansible.builtin.apt:
-    name: "{{ item }}"
-    loop:
-      - "nodejs"
-      - "npm"
+    name: '{{ item }}'
+  loop:
+    - 'nodejs'
+    - 'npm'
   tags:
     - node
-- name: Install n
+
+- name: Install n as node version manager
   community.general.npm:
     name: n
     global: true
   tags:
     - node
-- name: n 18
-  ansible.builtin.shell: n 18
+
+- name: Install node 18 # noqa: no-changed-when
+  ansible.builtin.command: n 18
   tags:
     - node
-- name: n 20
-  ansible.builtin.shell: n 20
+
+- name: Install node 20 # noqa: no-changed-when
+  ansible.builtin.command: n 20
   tags:
     - node
+
 #  TODO prettier
