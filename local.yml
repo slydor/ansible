@@ -1,10 +1,12 @@
-- hosts:
-    - localhost
+- hosts: localhost
+  gather_facts: true
+  # Only if current user is sudoer
+  # become_user: "{{ lookup('env', 'USER') }}"
   vars:
     source_key: "./.ssh/id_rsa"
     home_dir: "{{ lookup('env', 'HOME') }}"
     dest_key: "{{ home_dir }}/.ssh/id_rsa"
-    user: "{{ lookup('env', 'USER') }}"
+    user: "{{ ansible_user_id }}"
   pre_tasks:
     - name: Update apt
       become: true
@@ -47,6 +49,12 @@
       ansible.builtin.import_tasks:
         file: tasks/node.yml
       become: true
+    - name: Install Deno
+      ansible.builtin.import_tasks:
+        file: tasks/deno.yml
+    - name: Install Rust
+      ansible.builtin.import_tasks:
+        file: tasks/rust.yml
     - name: Install Java
       ansible.builtin.import_tasks:
         file: tasks/java.yml
