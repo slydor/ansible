@@ -33,6 +33,9 @@
       ansible.builtin.import_tasks:
         file: tasks/node.yml
       become: true
+    - name: Install Deno
+      ansible.builtin.import_tasks:
+        file: tasks/deno.yml
     - name: Install Rust
       ansible.builtin.import_tasks:
         file: tasks/rust.yml

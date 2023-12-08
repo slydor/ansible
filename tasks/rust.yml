@@ -27,7 +27,7 @@
   ansible.builtin.blockinfile:
     dest: '{{ home_dir }}/.bashrc'
     block: |
-      source {{ home_dir }}/.cargo/env
+      source $HOME/.cargo/env
     marker: '# {mark} ANSIBLE MANAGED BLOCK - .cargo/env'
     insertafter: EOF
     create: true
