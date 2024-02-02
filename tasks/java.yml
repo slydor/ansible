@@ -1,5 +1,5 @@
 - name: Check if SDKMAN is installed # noqa: no-changed-when
-  ansible.builtin.command: sdk --version
+  ansible.builtin.command: sdk version
   register: sdk_exists
   ignore_errors: true
   tags:
@@ -36,3 +36,5 @@
     mode: 0644
   tags:
     - java
+
+

@@ -22,7 +22,7 @@ ANSIBLE_ASK_VAULT_PASS=True ansible-pull --url https://github.com/slydor/ansible
 
 - Setup FLS git config
 ```sh
-ANSIBLE_ASK_VAULT_PASS=True ansible-pull --url https://github.com/slydor/ansible.git --tags git-fls 
+ANSIBLE_ASK_VAULT_PASS=True ansible-pull --url https://github.com/slydor/ansible.git --tags git-fls
 ```
 
 ### Tags
