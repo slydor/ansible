@@ -42,4 +42,8 @@
       ansible.builtin.import_tasks:
         file: tasks/dev.yml
       become: true
+    - name: Install Java
+      ansible.builtin.import_tasks:
+        file: tasks/java.yml
+      become: true
 # # TODO add unintended-upgrades

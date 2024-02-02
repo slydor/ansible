@@ -1,0 +1,38 @@
+- name: Check if SDKMAN is installed # noqa: no-changed-when
+  ansible.builtin.command: sdk --version
+  register: sdk_exists
+  ignore_errors: true
+  tags:
+    - java
+
+- name: Download SDK installer
+  # become: true
+  when: sdk_exists is failed
+  ansible.builtin.get_url:
+    url: https://get.sdkman.io
+    dest: /tmp/sdk.install.sh
+    mode: 0755
+    force: true
+  tags:
+    - java
+
+- name: Install SDKMAN, the Java package manager # noqa: command-instead-of-shell
+  when: sdk_exists is failed
+  become: false
+  ansible.builtin.shell: /tmp/sdk.install.sh
+  tags:
+    - java
+
+- name: Ensure sdk is added to PATH
+  ansible.builtin.blockinfile:
+    dest: '{{ home_dir }}/.bashrc'
+    block: |
+      if [ -d ~/.sdkman ]; then
+        source {{ home_dir }}/.sdkman/bin/sdkman-init.sh
+      fi
+    marker: '# {mark} ANSIBLE MANAGED BLOCK - source sdkman'
+    insertafter: EOF
+    create: true
+    mode: 0644
+  tags:
+    - java
