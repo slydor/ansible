@@ -6,7 +6,6 @@
     - java
 
 - name: Download SDK installer
-  # become: true
   when: sdk_exists is failed
   ansible.builtin.get_url:
     url: https://get.sdkman.io
@@ -36,5 +35,3 @@
     mode: 0644
   tags:
     - java
-
-
