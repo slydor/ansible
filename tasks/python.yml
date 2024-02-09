@@ -1,3 +1,17 @@
+# It's important to have these before running pyenv install <python version>. Uninstall and re-install if required.
+- name: Install pyenv packages for building python
+  ansible.builtin.apt:
+    name: "{{ item }}"
+    state: present
+  loop:
+    - "zlib1g"
+    - "zlib1g-dev"
+    - "libssl-dev"
+    - "libbz2-dev"
+    - "libsqlite3-dev"
+  tags:
+    - python
+
 - name: Check if pyenv is installed, the python version manmager # noqa: no-changed-when
   ansible.builtin.command: pyenv version
   register: pyenv_exists

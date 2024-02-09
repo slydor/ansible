@@ -16,6 +16,7 @@
         - core
         - docker
         - node
+        - python
   tasks:
     - name: Install core packages
       ansible.builtin.import_tasks:
