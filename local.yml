@@ -1,9 +1,9 @@
 - hosts:
     - localhost
   vars:
-    source_key: './.ssh/id_rsa'
+    source_key: "./.ssh/id_rsa"
     home_dir: "{{ lookup('env', 'HOME') }}"
-    dest_key: '{{ home_dir }}/.ssh/id_rsa'
+    dest_key: "{{ home_dir }}/.ssh/id_rsa"
     user: "{{ lookup('env', 'USER') }}"
   pre_tasks:
     - name: Update apt
@@ -45,4 +45,7 @@
     - name: Install Java
       ansible.builtin.import_tasks:
         file: tasks/java.yml
+    - name: Install Python
+      ansible.builtin.import_tasks:
+        file: tasks/python.yml
 # # TODO add unintended-upgrades
