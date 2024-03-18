@@ -22,8 +22,29 @@
     - dev
     - shell
 
+- name: Add environment variables
+  ansible.builtin.copy:
+    src: files/.env
+    dest: '{{ home_dir }}/.env'
+    mode: preserve
+  tags:
+    - shell
+
+- name: Auto export every environment variables
+  ansible.builtin.blockinfile:
+    dest: '{{ home_dir }}/.bashrc'
+    block: |
+      source ~/.env
+    marker: '# {mark} ANSIBLE MANAGED BLOCK - auto export ~/.env'
+    insertafter: EOF
+    create: true
+    mode: 0644
+  tags:
+    - dev
+    - shell
+
 - name: Re-source bashrc to load updates # noqa: no-changed-when
-  ansible.builtin.command: '. {{ home_dir }}/.bashrc'
+  ansible.builtin.shell: '. {{ home_dir }}/.bashrc'
   tags:
     - dev
     - shell

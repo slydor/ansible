@@ -30,6 +30,7 @@ ANSIBLE_ASK_VAULT_PASS=True ansible-pull --url https://github.com/slydor/ansible
 
 - core _requires --ask-become-pass_
 - ssh
+- shell
 - git
 - node _requires --ask-become-pass_
 - docker _requires --ask-become-pass_
