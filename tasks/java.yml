@@ -26,9 +26,8 @@
   ansible.builtin.blockinfile:
     dest: '{{ home_dir }}/.bashrc'
     block: |
-      if [ -d ~/.sdkman ]; then
-        source {{ home_dir }}/.sdkman/bin/sdkman-init.sh
-      fi
+      export SDKMAN_DIR="$HOME/.sdkman"
+      [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
     marker: '# {mark} ANSIBLE MANAGED BLOCK - source sdkman'
     insertafter: EOF
     create: true
