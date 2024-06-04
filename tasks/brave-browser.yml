@@ -1,0 +1,33 @@
+- name: Install required system packages for Brave
+  ansible.builtin.apt:
+    name: '{{ item }}'
+    state: present
+  loop:
+    - 'apt-transport-https'
+    - 'gnupg-agent'
+  tags:
+    - brave
+
+- name: Add Brave gpg
+  ansible.builtin.apt_key:
+    url: https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg
+    state: present
+  tags:
+    - brave
+
+- name: Add Brave repository
+  ansible.builtin.apt_repository:
+    repo: deb https://brave-browser-apt-release.s3.brave.com/ stable main
+    state: present
+  tags:
+    - brave
+    
+- name: Update apt and install Brave
+  ansible.builtin.apt:
+    name: '{{ item }}'
+    state: present
+  loop:
+    - 'brave-browser'
+  tags:
+    - brave
+

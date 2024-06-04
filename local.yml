@@ -49,6 +49,10 @@
     - name: Install Python
       ansible.builtin.import_tasks:
         file: tasks/python.yml
+    - name: Install Brave browser
+      ansible.builtin.import_tasks:
+        file: tasks/brave-browser.yml
+      become: true
     - name: Setup dev environment
       ansible.builtin.import_tasks:
         file: tasks/dev.yml
