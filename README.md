@@ -32,13 +32,15 @@ ANSIBLE_ASK_VAULT_PASS=True ansible-pull --url https://github.com/slydor/ansible
 - ssh
 - shell
 - git
-- node _requires --ask-become-pass_
-- docker _requires --ask-become-pass_
 - git-personal
 - git-fls
-- dev _requires --ask-become-pass_
+- docker _requires --ask-become-pass_
+- vscode _requires --ask-become-pass_
+- brave _requires --ask-become-pass_
+- node _requires --ask-become-pass_
 - java
 - python _requires --ask-become-pass_
+- dev _requires --ask-become-pass_
 
 ## Development
 
