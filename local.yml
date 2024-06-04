@@ -28,20 +28,20 @@
     - name: Setup git config
       ansible.builtin.import_tasks:
         file: tasks/git.yml
-    - name: Install Node.js
+    - name: Setup shell
       ansible.builtin.import_tasks:
-        file: tasks/node.yml
-      become: true
+        file: tasks/shell.yml
     - name: Install Docker
       ansible.builtin.import_tasks:
         file: tasks/docker.yml
       become: true
-    - name: Setup shell
+    - name: Install VSCode
       ansible.builtin.import_tasks:
-        file: tasks/shell.yml
-    - name: Setup dev environment
+        file: tasks/vscode.yml
+      become: true
+    - name: Install Node.js
       ansible.builtin.import_tasks:
-        file: tasks/dev.yml
+        file: tasks/node.yml
       become: true
     - name: Install Java
       ansible.builtin.import_tasks:
@@ -49,4 +49,8 @@
     - name: Install Python
       ansible.builtin.import_tasks:
         file: tasks/python.yml
+    - name: Setup dev environment
+      ansible.builtin.import_tasks:
+        file: tasks/dev.yml
+      become: true
 # # TODO add unintended-upgrades

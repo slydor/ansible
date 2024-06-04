@@ -1,4 +1,4 @@
-- name: Install required system packages for ansible
+- name: Install required system packages for Docker
   ansible.builtin.apt:
     name: '{{ item }}'
     state: present

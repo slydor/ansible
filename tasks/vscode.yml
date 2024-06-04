@@ -1,0 +1,33 @@
+- name: Install required system packages for VSCode
+  ansible.builtin.apt:
+    name: '{{ item }}'
+    state: present
+  loop:
+    - 'apt-transport-https'
+    - 'gnupg-agent'
+  tags:
+    - vscode
+
+- name: Add VSCode gpg
+  ansible.builtin.apt_key:
+    url: https://packages.microsoft.com/keys/microsoft.asc
+    state: present
+  tags:
+    - vscode
+
+- name: Add VSCode repository
+  ansible.builtin.apt_repository:
+    repo: deb [arch=amd64] https://packages.microsoft.com/repos/code stable main
+    state: present
+  tags:
+    - vscode
+    
+- name: Update apt and install VSCode
+  ansible.builtin.apt:
+    name: '{{ item }}'
+    state: present
+  loop:
+    - 'code'
+  tags:
+    - vscode
+
