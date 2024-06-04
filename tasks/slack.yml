@@ -1,0 +1,7 @@
+- name: Install Slack using snap
+  community.general.snap:
+    name:
+      - slack
+    state: present
+  tags:
+    - slack

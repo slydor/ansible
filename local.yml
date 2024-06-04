@@ -53,6 +53,10 @@
       ansible.builtin.import_tasks:
         file: tasks/brave-browser.yml
       become: true
+    - name: Install Slack
+      ansible.builtin.import_tasks:
+        file: tasks/slack.yml
+      become: true
     - name: Setup dev environment
       ansible.builtin.import_tasks:
         file: tasks/dev.yml
