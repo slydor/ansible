@@ -1,0 +1,8 @@
+- name: Install Rider using snap
+  community.general.snap:
+    name:
+      - rider
+    classic: true
+    state: present
+  tags:
+    - rider

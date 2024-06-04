@@ -39,6 +39,10 @@
       ansible.builtin.import_tasks:
         file: tasks/vscode.yml
       become: true
+    - name: Install JetBrains Rider
+      ansible.builtin.import_tasks:
+        file: tasks/rider.yml
+      become: true
     - name: Install Node.js
       ansible.builtin.import_tasks:
         file: tasks/node.yml
