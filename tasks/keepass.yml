@@ -1,0 +1,7 @@
+- name: Install KeePassXC using snap
+  community.general.snap:
+    name:
+      - keepassxc
+    state: present
+  tags:
+    - keepass

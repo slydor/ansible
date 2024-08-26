@@ -69,6 +69,10 @@
       ansible.builtin.import_tasks:
         file: tasks/slack.yml
       become: true
+    - name: Install KeePassXC
+      ansible.builtin.import_tasks:
+        file: tasks/keepass.yml
+      become: true
     - name: Setup dev environment
       ansible.builtin.import_tasks:
         file: tasks/dev.yml

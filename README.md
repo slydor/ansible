@@ -42,6 +42,7 @@ ANSIBLE_ASK_VAULT_PASS=True ansible-pull --url https://github.com/slydor/ansible
 - python _requires --ask-become-pass_
 - vscode _requires --ask-become-pass_
 - brave _requires --ask-become-pass_
+- keepass _requires --ask-become-pass_
 - dev _requires --ask-become-pass_
 
 ## Development
