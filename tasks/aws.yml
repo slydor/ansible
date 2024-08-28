@@ -1,0 +1,8 @@
+- name: Install AWS CLI (v2) using snap
+  community.general.snap:
+    name:
+      - aws-cli
+    classic: true
+    state: present
+  tags:
+    - aws

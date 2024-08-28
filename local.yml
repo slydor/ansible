@@ -73,6 +73,14 @@
       ansible.builtin.import_tasks:
         file: tasks/keepass.yml
       become: true
+    - name: Install Kubectl
+      ansible.builtin.import_tasks:
+        file: tasks/kubectl.yml
+      become: true
+    - name: Install AWS CLI (v2)
+      ansible.builtin.import_tasks:
+        file: tasks/aws.yml
+      become: true
     - name: Setup dev environment
       ansible.builtin.import_tasks:
         file: tasks/dev.yml

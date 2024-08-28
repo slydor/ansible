@@ -1,0 +1,23 @@
+- name: Install Kubectl using snap
+  community.general.snap:
+    name:
+      - kubectl
+    classic: true
+    state: present
+  tags:
+    - kubectl
+- name: Install k9s using snap
+  community.general.snap:
+    name:
+      - k9s
+    state: present
+  tags:
+    - kubectl
+# This is a workaround because the snap package is not up to date, see https://github.com/derailed/k9s/issues/1873. Requires snap installation in root mode.
+- name: Fix k9s snap installation
+  ansible.builtin.file:
+    src: /snap/k9s/current/bin/k9s
+    dest: /snap/bin/k9s
+    state: link
+  tags:
+    - kubectl
