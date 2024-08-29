@@ -1,7 +1,8 @@
-- name: Install Kubectl using snap
+- name: Install Kubectl and helm using snap
   community.general.snap:
     name:
       - kubectl
+      - helm
     classic: true
     state: present
   tags:
