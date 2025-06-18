@@ -45,6 +45,10 @@
       ansible.builtin.import_tasks:
         file: tasks/rider.yml
       become: true
+    - name: Install JetBrains IntelliJ IDEA
+      ansible.builtin.import_tasks:
+        file: tasks/intellij.yml
+      become: true
     - name: Install Node.js
       ansible.builtin.import_tasks:
         file: tasks/node.yml

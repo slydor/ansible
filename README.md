@@ -41,6 +41,8 @@ ANSIBLE_ASK_VAULT_PASS=True ansible-pull --url https://github.com/slydor/ansible
 - java
 - python _requires --ask-become-pass_
 - vscode _requires --ask-become-pass_
+- rider _requires --ask-become-pass_
+- intellij _requires --ask-become-pass_
 - brave _requires --ask-become-pass_
 - keepass _requires --ask-become-pass_
 - kubectl _requires --ask-become-pass_

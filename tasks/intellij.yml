@@ -1,0 +1,8 @@
+- name: Install IntelliJ using snap
+  community.general.snap:
+    name:
+      - intellij-idea-ultimate
+    classic: true
+    state: present
+  tags:
+    - intellij
