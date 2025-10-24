@@ -9,7 +9,7 @@
   become: true
   when: deno_exists is failed
   ansible.builtin.get_url:
-    url: https://deno.land/x/install/install.sh
+    url: https://deno.land/install.sh
     dest: /tmp/deno.install.sh
     mode: 0755
     force: true
