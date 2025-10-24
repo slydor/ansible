@@ -9,6 +9,7 @@
     - 'curl'
     - 'git'
     - 'htop'
+    - 'libx11-dev'
     - 'python3-pip'
     - 'software-properties-common'
     - 'tmux'
