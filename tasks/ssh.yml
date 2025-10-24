@@ -1,21 +1,28 @@
 - name: Ensure .ssh directory exists.
   ansible.builtin.file:
-    dest: '{{ dest_key | dirname }}'
+    dest: '{{ dest_ssh_key | dirname }}'
     mode: 0700
     state: directory
   tags:
     - ssh
 - name: Install ssh key
   ansible.builtin.copy:
-    src: '{{ source_key }}'
-    dest: '{{ dest_key }}'
+    src: '{{ source_ssh_key }}'
+    dest: '{{ dest_ssh_key }}'
     mode: 0600
   tags:
     - ssh
 - name: Install ssh key public
   ansible.builtin.copy:
-    src: '{{ source_key }}.pub'
-    dest: '{{ dest_key }}.pub'
+    src: '{{ source_ssh_key }}.pub'
+    dest: '{{ dest_ssh_key }}.pub'
+    mode: 0644
+  tags:
+    - ssh
+- name: Install ssh config
+  ansible.builtin.copy:
+    src: '{{ source_ssh_config }}'
+    dest: '{{ dest_ssh_config }}'
     mode: 0644
   tags:
     - ssh
