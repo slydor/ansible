@@ -1,5 +1,8 @@
 alias Up="sudo apt update && sudo apt upgrade -y --allow-downgrades"
 
+alias Git-FLS='ANSIBLE_ASK_VAULT_PASS=True ansible-pull --url https://github.com/slydor/ansible.git --tags git-fls && git config --global --list'
+alias Git-Slydor='ANSIBLE_ASK_VAULT_PASS=True ansible-pull --url https://github.com/slydor/ansible.git --tags git-personal && git config --global --list'
+
 alias Poseidon='aws sso login --profile aws-poseidon && aws eks update-kubeconfig --name poseidon --profile aws-poseidon'
 alias Zeus='aws sso login --profile aws-zeus && aws eks update-kubeconfig --name zeus --profile aws-zeus'
 
